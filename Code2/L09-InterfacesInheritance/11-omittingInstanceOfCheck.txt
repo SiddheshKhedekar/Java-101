@@ -1,0 +1,18 @@
+If the instanceof check is removed from scene.java e.g.
+
+            for (Drawable d : elements)
+            {  
+//                if (d instanceof Moveable)
+  //              {
+                    Moveable m = (Moveable) d;
+                    m.move(1);
+    //            }
+            }
+
+RESULT:
+There is a run time error (note: not compile error) because some drawables cannot be cast to Moveables i.e.
+
+java.lang.ClassCastException:
+House cannot be case to Moveable
+
+"if (d instanceof Moveable)" means, I think, each d is checked for "implements Drawable, Moveable" in class definition and house didn't contain this while car and dog did.
